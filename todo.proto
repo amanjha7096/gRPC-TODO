@@ -1,5 +1,7 @@
 syntax="proto3";
 
+import "google/protobuf/empty.proto";
+
 service TodoService{
     rpc CreateTodo (Todo) returns (Todo);
     rpc GetTodo (TodoRequest) returns (Todo);
