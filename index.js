@@ -29,10 +29,10 @@ gRPC = Communication system
 */
 
 const grpc = require('@grpc/grpc-js');
-const prtoLoader = require('@grpc/proto-loader');
+const protoLoader = require('@grpc/proto-loader');
 
 //loading proto in our server
-const packageDefinition = prtoLoader.loadSync("todo.proto", {
+const packageDefinition = protoLoader.loadSync("todo.proto", {
     keepCase: true,
     longs: String,
     enums: String,
@@ -60,7 +60,7 @@ const todos = [
 server.addService(todosProto.TodoService.service, {
     //we are adding rpcs 
     listTodos: (call, callback) => {   //all request parameter is going to come in call-> call.param
-        callback(null, todos); //response is sent using callback
+        callback(null, {todos}); //response is sent using callback
     },
     createTodo: (call, callback) => {
         let incomingTodo = call.request; //getting request data from call.request
